@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+
+  <Type Name="std::map&lt;*&gt;" IncludeView="jsoncpp">
+    <Expand>
+      <TreeItems>
+        <Size>_Mypair._Myval2._Myval2._Mysize</Size>
+        <HeadPointer>_Mypair._Myval2._Myval2._Myhead-&gt;_Parent</HeadPointer>
+        <LeftPointer>_Left</LeftPointer>
+        <RightPointer>_Right</RightPointer>
+        <ValueNode Condition="_Isnil == 0 &amp;&amp; true" Name="[{_Myval.second.type_,view(jsoncpp)}]">_Myval,view(jsoncpp)</ValueNode>
+      </TreeItems>
+    </Expand>
+  </Type>
+
+  <Type Name="std::pair&lt;*&gt;" IncludeView="jsoncpp">
+    <DisplayString Condition="second.type_ == 0 &amp;&amp; first.cstr_ == nullptr">null</DisplayString>
+    <DisplayString Condition="second.type_ == 0 &amp;&amp; first.cstr_ != nullptr">{first.cstr_,s8}: null</DisplayString>
+    <DisplayString Condition="second.type_ == 1 &amp;&amp; first.cstr_ == nullptr">{second.value_.int_}</DisplayString>
+    <DisplayString Condition="second.type_ == 1 &amp;&amp; first.cstr_ != nullptr">{first.cstr_,s8}: {second.value_.int_}</DisplayString>
+    <DisplayString Condition="second.type_ == 2 &amp;&amp; first.cstr_ == nullptr">{second.value_.uint_}</DisplayString>
+    <DisplayString Condition="second.type_ == 2 &amp;&amp; first.cstr_ != nullptr">{first.cstr_,s8}: {second.value_.uint_}</DisplayString>
+    <DisplayString Condition="second.type_ == 3 &amp;&amp; first.cstr_ == nullptr">{second.value_.real_}</DisplayString>
+    <DisplayString Condition="second.type_ == 3 &amp;&amp; first.cstr_ != nullptr">{first.cstr_,s8}: {second.value_.real_}</DisplayString>
+    <DisplayString Condition="second.type_ == 4 &amp;&amp; first.cstr_ == nullptr">{second.value_.string_,s8}</DisplayString>
+    <DisplayString Condition="second.type_ == 4 &amp;&amp; first.cstr_ != nullptr">{first.cstr_,s8}: {second.value_.string_,s8}</DisplayString>
+    <DisplayString Condition="second.type_ == 5 &amp;&amp; first.cstr_ == nullptr">{second.value_.bool_}</DisplayString>
+    <DisplayString Condition="second.type_ == 5 &amp;&amp; first.cstr_ != nullptr">{first.cstr_,s8}: {second.value_.bool_}</DisplayString>
+    <DisplayString Condition="second.type_ == 6 &amp;&amp; first.cstr_ == nullptr">array({second.value_.map_-&gt;_Mypair._Myval2._Myval2._Mysize})</DisplayString>
+    <DisplayString Condition="second.type_ == 6 &amp;&amp; first.cstr_ != nullptr">{first.cstr_,s8}: array({second.value_.map_-&gt;_Mypair._Myval2._Myval2._Mysize})</DisplayString>
+    <DisplayString Condition="second.type_ == 7 &amp;&amp; first.cstr_ == nullptr">object({second.value_.map_-&gt;_Mypair._Myval2._Myval2._Mysize})</DisplayString>
+    <DisplayString Condition="second.type_ == 7 &amp;&amp; first.cstr_ != nullptr">{first.cstr_,s8}: object({second.value_.map_-&gt;_Mypair._Myval2._Myval2._Mysize})</DisplayString>
+    <StringView Condition="second.type_ == 1 &amp;&amp; first.cstr_ != nullptr">first.cstr_,s8</StringView>
+    <StringView Condition="second.type_ == 2 &amp;&amp; first.cstr_ != nullptr">first.cstr_,s8</StringView>
+    <StringView Condition="second.type_ == 3 &amp;&amp; first.cstr_ != nullptr">first.cstr_,s8</StringView>
+    <StringView Condition="second.type_ == 4">second.value_.string_,s8</StringView>
+    <StringView Condition="second.type_ == 5 &amp;&amp; first.cstr_ != nullptr">first.cstr_,s8</StringView>
+    <StringView Condition="second.type_ == 6 &amp;&amp; first.cstr_ != nullptr">first.cstr_,s8</StringView>
+    <StringView Condition="second.type_ == 7 &amp;&amp; first.cstr_ != nullptr">first.cstr_,s8</StringView>
+    <Expand>
+      <ExpandedItem Condition="second.type_ == 6">*(second.value_.map_),view(jsoncpp)</ExpandedItem>
+      <ExpandedItem Condition="second.type_ == 7">*(second.value_.map_),view(jsoncpp)</ExpandedItem>
+    </Expand>
+  </Type>
+
+  <Type Name="Json::Value">
+    <Expand>
+      <ExpandedItem Condition="type_ == 6">*(value_.map_),view(jsoncpp)</ExpandedItem>
+      <ExpandedItem Condition="type_ == 7">*(value_.map_),view(jsoncpp)</ExpandedItem>
+    </Expand>
+  </Type>
+
+</AutoVisualizer>
